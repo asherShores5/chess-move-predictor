@@ -1,0 +1,297 @@
+/* Base layout */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    gap: 2rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 1000px; /* Reduced from 1200px */
+    width: 95%;
+}
+
+.board-container {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.controls-container {
+    flex: 0 0 300px; /* Changed to fixed width */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Chess board */
+.board {
+    display: grid;
+    grid-template-columns: repeat(8, 75px);
+    gap: 1px;
+    background: #769656;
+    padding: 10px;
+    border-radius: 4px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.square {
+    width: 75px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.square.white {
+    background: #f0d9b5;
+}
+
+.square.black {
+    background: #b58863;
+}
+
+/* Board notation */
+.square[data-row="7"]::after {
+    content: attr(data-file);
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    font-size: 0.8em;
+    color: #666;
+}
+
+.square[data-col="0"]::before {
+    content: attr(data-rank);
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    font-size: 0.8em;
+    color: #666;
+}
+
+.square.black[data-row="7"]::after,
+.square.black[data-col="0"]::before {
+    color: #ddd;
+}
+
+/* Pieces */
+.piece {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: move;
+    font-size: 1em;
+}
+
+.piece.white-piece {
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.piece.black-piece {
+    color: black;
+}
+
+/* Drag and drop */
+.dragging {
+    opacity: 0.5;
+}
+
+.square.drag-over {
+    background-color: rgba(255, 255, 0, 0.2) !important;
+}
+
+.square.white.drag-over {
+    background-color: #e6d0ac !important;
+}
+
+.square.black.drag-over {
+    background-color: #a67f5a !important;
+}
+
+/* Piece selector */
+.piece-selector {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.piece-button {
+    padding: 10px;
+    font-size: 1.5em;
+    border: 1px solid #ddd;
+    background: #e4e4e4;
+    cursor: grab;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.piece-button:hover {
+    background: #d4d4d4;
+}
+
+.piece-button.selected {
+    background: #2196f3;
+}
+
+.selected-piece {
+    background: #e9ecef;
+    padding: 0.75rem;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Controls and buttons */
+.buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.buttons button {
+    flex: 1;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    background: #2196f3;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1976d2;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Engine controls */
+.engine-controls {
+    background: #f8f9fa;
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.analysis-controls {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.analysis-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.turn-selector {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    background: white;
+    cursor: pointer;
+}
+
+.engine-output {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    min-height: 80px;
+}
+
+.evaluation {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.best-move {
+    color: #2196f3;
+}
+
+/* Make move button */
+.make-move-btn {
+    padding: 8px 16px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.make-move-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* FEN notation */
+.notation {
+    background: #f8f9fa;
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.fen {
+    background: white;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    font-family: monospace;
+    font-size: 0.9rem;
+    word-break: break-all;
+}
+
+/* Section titles */
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .controls-container {
+        width: 100%;
+        max-width: none;
+    }
+}

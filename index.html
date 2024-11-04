@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="board-container">
+            <div class="board" id="board"></div>
+        </div>
+        
+        <div class="controls-container">
+            <div class="section">
+                <div class="section-title">Pieces</div>
+                <div class="piece-selector" id="pieceSelector"></div>
+                <div class="selected-piece" id="selectedPiece">Selected: None</div>
+            </div>
+
+            <div class="section">
+                <div class="buttons">
+                    <button onclick="resetBoard()">Reset Board</button>
+                    <button onclick="clearBoard()">Clear Board</button>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Engine Analysis</div>
+                <div class="engine-controls">
+                    <div class="analysis-controls">
+                        <select id="turnSelector" class="turn-selector">
+                            <option value="w">White to move</option>
+                            <option value="b">Black to move</option>
+                        </select>
+                        <div class="analysis-buttons">
+                            <button id="analyzeBtn" class="engine-button">Analyze Position</button>
+                            <button id="stopAnalysisBtn" class="engine-button" disabled>Stop</button>
+                        </div>
+                    </div>
+                    <div id="engineOutput" class="engine-output">
+                        <div class="evaluation"></div>
+                        <div class="best-move"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Position</div>
+                <div class="notation">
+                    <label for="fenDisplay">FEN Notation:</label>
+                    <div class="fen" id="fenDisplay"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load scripts in correct order -->
+    <script src="pieces.js"></script>
+    <script src="board.js"></script>
+    <script src="engine.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
