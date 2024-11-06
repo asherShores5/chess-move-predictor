@@ -295,3 +295,40 @@ button:disabled {
         max-width: none;
     }
 }
+
+/* Material Counts */
+/* Add to your CSS file */
+.material-counter {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.material-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.material-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.25rem;
+}
+
+.material-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.material-divider {
+    width: 1px;
+    height: 30px;
+    background: #e9ecef;
+    margin: 0 1rem;
+}

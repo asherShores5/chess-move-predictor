@@ -50,6 +50,7 @@ function resetBoard() {
     saveBoard();
     createBoard();
     updateFEN();
+    calculateMaterial();
 }
 
 function clearBoard() {
@@ -57,9 +58,8 @@ function clearBoard() {
     saveBoard();
     createBoard();
     updateFEN();
+    calculateMaterial();
 }
-
-// Add to app.js
 
 function initializeEngineControls() {
     const analyzeBtn = document.getElementById('analyzeBtn');
@@ -112,5 +112,5 @@ document.addEventListener('DOMContentLoaded', () => {
     updateFEN();
     updateSelectedPieceDisplay();
     initializeEngineControls();
-    addMakeMoveButton();
+    calculateMaterial();
 });

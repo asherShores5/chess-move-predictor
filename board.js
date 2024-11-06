@@ -78,6 +78,7 @@ function updateSquare(row, col, piece) {
     saveBoard();
     createBoard();
     updateFEN();
+    calculateMaterial();
 }
 
 // Simplify FEN generation to use turn parameter

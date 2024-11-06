@@ -80,34 +80,7 @@ class ChessEngine {
         }
     }
 
-    addMakeMoveButton() {
-        const engineOutput = document.getElementById('engineOutput');
-        const existingButton = engineOutput.querySelector('.make-move-btn');
-        
-        if (!existingButton) {
-            const makeMoveBtnContainer = document.createElement('div');
-            makeMoveBtnContainer.style.marginTop = '10px';
-            
-            const makeMoveBtn = document.createElement('button');
-            makeMoveBtn.className = 'make-move-btn';
-            makeMoveBtn.textContent = 'Make Engine Move';
-            makeMoveBtn.disabled = true;
-            
-            makeMoveBtn.addEventListener('click', () => {
-                const bestMoveDiv = engineOutput.querySelector('.best-move');
-                const moveText = bestMoveDiv.textContent;
-                const move = moveText.split(': ')[1];
-                if (move) {
-                    executeMove(move);
-                }
-            });
-            
-            makeMoveBtnContainer.appendChild(makeMoveBtn);
-            engineOutput.appendChild(makeMoveBtnContainer);
-        }
-    }
-
-    async analyzeFEN(fen, depth = 20) {
+    async analyzeFEN(fen, depth = 15) {
         if (!this.initialized) await this.init();
         if (this.isAnalyzing) return;
         
