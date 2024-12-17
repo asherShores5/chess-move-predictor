@@ -43,25 +43,6 @@ class ChessEngine {
         const bestMoveDiv = engineOutput.querySelector('.best-move');
         bestMoveDiv.textContent = `Best move: ${bestMove}`;
 
-        // Enable the make move button or create it if it doesn't exist
-        let makeMoveBtn = engineOutput.querySelector('.make-move-btn');
-        if (!makeMoveBtn) {
-            makeMoveBtn = document.createElement('button');
-            makeMoveBtn.className = 'make-move-btn';
-            makeMoveBtn.textContent = 'Make Engine Move';
-            
-            makeMoveBtn.addEventListener('click', () => {
-                if (bestMove) {
-                    executeMove(bestMove);
-                    // Disable the button after move is made
-                    makeMoveBtn.disabled = true;
-                }
-            });
-            
-            engineOutput.appendChild(makeMoveBtn);
-        } else {
-            makeMoveBtn.disabled = false;
-        }
 
         const event = new CustomEvent('engineMove', {
             detail: {
